@@ -48,6 +48,9 @@ body{
     border-radius: 1rem;
 }
 
+#cero{
+    grid-column: 1 / 3;
+}
 #clear{
     grid-column: 1 / 3;
 }
