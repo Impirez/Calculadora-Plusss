@@ -12,19 +12,6 @@ botones.forEach(boton => {
             pantalla.innerHTML = text.slice(0, maxLength);
         }
 
-        //sofia
-        if(boton.textContent === 'mol'){
-            console.log('hi')
-            let contador = 0;
-            const b_s = document.querySelector('.b-mol');
-            b_s.addEventListener('click', () => {
-                contador++;
-                if(contador === 4){
-                    alert('¡Amo muchisimo a Sofiaa :3!');
-                }
-        })
-        }
-
         //borra todo
         if(boton.id === "clear"){
             pantalla.textContent = "0";
@@ -47,9 +34,24 @@ botones.forEach(boton => {
             contenido = contenido.replace(/X/g, "*");
             const operaciones = {
                 '√': (numero) => Math.sqrt(numero),
-                'cos': (numero) => Math.cos(numero),
-                'tan': (numero) => Math.tan(numero),
-                'sen': (numero) => Math.sin(numero),
+                'cos': (numero) => {
+                    const anguloGrados = numero;
+                    const anguloRadianes = anguloGrados * (Math.PI / 180);
+                    const resultadoCos = Math.cos(anguloRadianes);
+                    return resultadoCos;
+                },
+                'tan': (numero) => {
+                    const anguloGrados = numero;
+                    const anguloRadianes = anguloGrados * (Math.PI / 180);
+                    const resultadoTan = Math.tan(anguloRadianes);
+                    return resultadoTan;
+                },
+                'sen': (numero) => {
+                    const anguloGrados = numero;
+                    const anguloRadianes = anguloGrados * (Math.PI / 180);
+                    const resultadoSen = Math.sin(anguloRadianes);
+                    return resultadoSen;
+                },
                 '%': (numero) => numero / 100,
                 'x²': (numero) => Math.pow(numero, 2),
                 '!': (numero) => {
@@ -65,6 +67,7 @@ botones.forEach(boton => {
             },
                 'π': (numero) =>  numero * 3.141592653589793
             };
+            
             try {
                 pantalla.textContent = eval(contenido);
                 return;
